@@ -20,18 +20,18 @@
           </p>
         </div>
         <div class="flex flex-col gap-2 ms:gap-3">
-          <a href="" class="flex items-center gap-3 cursor-pointer group">
+          <a href="https://mail.google.com/mail/u/1/#inbox" class="flex items-center gap-3 cursor-pointer group">
             <div
               class="icon-emailsvg text-lg transition duration-300 group-hover:!text-[#8E9DCC]"
             ></div>
             <p
               class="leading-[22.131px] text-sm transition duration-300 group-hover:text-[#8E9DCC]"
             >
-              chatim@bot.com
+              advice_ai@bot.com
             </p>
           </a>
           <a
-            href=""
+            href="https://t.me/Botirov_Valisher"
             target="_blank"
             class="flex items-center gap-3 cursor-pointer group"
           >
@@ -41,27 +41,27 @@
             <p
               class="leading-[22.131px] text-sm transition duration-300 group-hover:text-[#8E9DCC]"
             >
-              @chatim_bot
+              @adviceai_bot
             </p>
           </a>
-          <a href="" class="flex items-center gap-3 cursor-pointer group">
+          <a href="tel:+998945360998" class="flex items-center gap-3 cursor-pointer group">
             <div
               class="icon-phonesvg text-lg transition duration-300 group-hover:!text-[#8E9DCC]"
             ></div>
             <p
               class="leading-[22.131px] text-sm transition duration-300 group-hover:text-[#8E9DCC]"
             >
-              + 998 99 990 00 10
+              + 998 94 536 09 98
             </p>
           </a>
-          <a href="" class="flex items-center gap-3 cursor-pointer group">
+          <a href="https://www.instagram.com/valisher_botirov" class="flex items-center gap-3 cursor-pointer group">
             <div
               class="icon-facebook-brandssvg text-lg transition duration-300 group-hover:!text-[#8E9DCC]"
             ></div>
             <p
               class="leading-[22.131px] text-sm transition duration-300 group-hover:text-[#8E9DCC]"
             >
-              chatim
+              advice_ai
             </p>
           </a>
         </div>
@@ -104,17 +104,17 @@
             <p>Мы в соц. сетях:</p>
             <div class="flex items-center gap-5">
               <a
-                href="#"
+                href="https://t.me/Botirov_Valisher"
                 target="_blank"
                 class="icon-telegramsvg text-2xl cursor-pointer transition duration-300 hover:rotate-[360deg]"
               ></a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/valisher-botirov/"
                 target="_blank"
                 class="icon-facebook-brandssvg text-2xl cursor-pointer transition duration-300 hover:rotate-[360deg]"
               ></a>
               <a
-                href="#"
+                href="https://www.instagram.com/valisher_botirov"
                 target="_blank"
                 class="icon-instagram text-2xl cursor-pointer transition duration-300 hover:rotate-[360deg]"
               ></a>

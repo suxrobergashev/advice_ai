@@ -5,16 +5,18 @@
     <div
       class="bg-[#49549D] rounded-[30px] sm:rounded-[40px] pt-10 sm:pt-[55px] pb-[30px] px-5 sm:px-8 lg:px-16"
     >
-      <img src="@/assets/icon/logo.svg" alt="logo" />
+      <h2 class="font-bold text-[40px] sm:text-[50px] text-[#BAE06A]">
+        Advice AI
+      </h2>
       <div
-        class="mt-[30px] font-bold leading-[46px] sm:leading-[55px] lg:leading-[70px] text-[40px] sm:text-[50px] lg:text-[58px]"
+        class="mt-[20px] font-medium leading-[46px] sm:leading-[55px] lg:leading-[70px] text-[40px] sm:text-[50px] lg:text-[58px]"
       >
-        <span class="text-[#BAE06A]">Автоматизация</span> обслуживания клиентов
-        легко.
+        Iqtidoringizni biz bilan oson aniqlang
       </div>
       <p class="mt-7 text-lg font-medium leading-7">
-        Chat.im может обслуживать клиентов с использованием чата на базе
-        искусственного интеллекта, добавив в него SaaS.
+        Advice AI foydalanuvchilariga o‘z iqtidorlarini sun’iy intellekt ustiga
+        qurilgan tizim orqali oson aniqlashga va ularni munosib kasbga
+        yo‘naltirishga xizmat qiladi
       </p>
       <div class="mt-8 flex gap-4">
         <a
@@ -33,7 +35,7 @@
         class="bg-[#333131] rounded-[30px] sm:rounded-[40px] px-5 sm:px-8 py-6"
       >
         <p class="text-2xl sm:text-[30px] font-[700] leading-8">
-          Ваши клиенты уже в мессенджерах
+          Bizni ijtimoiy tarmoqlarda kuzatib boring !
         </p>
         <div class="flex gap-6 mt-4">
           <a
@@ -57,9 +59,9 @@
           <p
             class="text-[#363636] text-2xl text-center sm:text-[26px] leading-6 sm:leading-8 font-bold mb-4 sm:mb-3"
           >
-            Одно приложение для всех коммуникаций
+            Bizni xoziroq sinab ko'rishingiz mumkin
           </p>
-            <SButton variant="white">Попробовать бесплатно </SButton>
+          <SButton variant="white">Попробовать бесплатно </SButton>
         </div>
       </div>
     </div>
@@ -75,23 +77,23 @@ function getImageUrl(name: string) {
 
 const social: { icon: string; link: string }[] = [
   {
-    link: "#",
+    link: "https://t.me/Botirov_Valisher",
     icon: "telegram",
   },
   {
-    link: "#",
+    link: "https://t.me/Botirov_Valisher",
     icon: "whatsapp",
   },
   {
-    link: "#",
+    link: "https://t.me/Botirov_Valisher",
     icon: "mail",
   },
   {
-    link: "#",
+    link: "https://t.me/Botirov_Valisher",
     icon: "facebook",
   },
   {
-    link: "#",
+    link: "https://t.me/Botirov_Valisher",
     icon: "instagram",
   },
 ];

@@ -11,17 +11,18 @@
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 dm:gap-[80px] mt-8 sm:mt-10 md:mt-[68px]"
       >
-        <div class="" v-for="item in 4" :key="item">
-          <AboutCard />
+        <div class="" v-for="item in aboutInfo" :key="item.id">
+          <AboutCard :info="item" />
         </div>
       </div>
       <div
         class="mt-6 sm:mt-10 md:mt-[50px] text-[#5E6282] font-medium text-base sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-[26px] text-center md:px-[54px]"
       >
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+        Bizning sun'iy intellekt maslahatchimiz o'quvchilarga qiziqishlari va
+        ko'nikmalariga asoslanib, mos yo'nalishlarni aniqlashda yordam beradi. U
+        zamonaviy texnologiyalar va ma'lumotlar tahliliga tayanib,
+        o'quvchilarning shaxsiy qiziqishlariga mos keluvchi kasblar va
+        yo'nalishlarni tavsiya qiladi.
       </div>
     </div>
   </div>
@@ -29,4 +30,34 @@
 
 <script setup lang="ts">
 import AboutCard from "@/components/card/AboutCard.vue";
+const aboutInfo = [
+  {
+    id: 1,
+    title: "1200+ faol foydalanuvchi",
+    icon: "fa-solid fa-user",
+    description:
+      "Biz orqali foydalanuvchilarimiz o'z iqditorlarini aniqlab kelishmoqda",
+  },
+  {
+    id: 2,
+    title: "15+ xususiy maktablar",
+    icon: "fa-solid fa-school",
+    description:
+      "Biz orqali foydalanuvchilarimiz o'z iqditorlarini aniqlab kelishmoqda",
+  },
+  {
+    id: 3,
+    title: "100+ Mutahasislik kurslari",
+    icon: "fa-solid fa-book",
+    description:
+      "Biz orqali foydalanuvchilarimiz o'z iqditorlarini aniqlab kelishmoqda",
+  },
+  {
+    id: 4,
+    title: "1 000+ Mutahasislik testlari",
+    icon: "fa-solid fa-brain",
+    description:
+      "Biz orqali foydalanuvchilarimiz o'z iqditorlarini aniqlab kelishmoqda",
+  },
+];
 </script>

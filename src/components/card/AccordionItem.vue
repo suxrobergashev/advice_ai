@@ -8,7 +8,7 @@ interface Props {
   answer?: string;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 
 const isOpen = ref(false);
 function open() {

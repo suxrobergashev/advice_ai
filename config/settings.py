@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-os.getenv('DJANGO_SECRET_KEY','django-insecure-uoqg9b7uxfa=9h*596&c(=5s$#m+1q-3+c!dohyzg75z75f&7%')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-uoqg9b7uxfa=9h*596&c(=5s$#m+1q-3+c!dohyzg75z75f&7%')
 # SECRET_KEY = 'django-insecure-uoqg9b7uxfa=9h*596&c(=5s$#m+1q-3+c!dohyzg75z75f&7%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -140,7 +140,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'jwt': {
@@ -160,4 +159,4 @@ SWAGGER_SETTINGS = {
     "DEFAULT_MODEL_RENDERING": "example"
 }
 
-BASE_URL=os.getenv('BASE_URL', '')
+BASE_URL = os.getenv('BASE_URL', '')

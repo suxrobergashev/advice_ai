@@ -21,7 +21,7 @@
       </transition>
     </label>
     <label
-      class="!bg-white border border-[#04030899] sm:px-4 ms:px-3 px-2 sm:py-3 dm:py-3  py-2 rounded-[5px] flex items-center transition-all duration-300  border-opacity-[0.16] hover:border-opacity-50 hover:border-[#04030866] focus-within:border-opacity-100 focus-within:border-[#04030866]"
+      class="!bg-white border border-[#04030899] sm:px-4 ms:px-3 px-2 sm:py-3 dm:py-3 py-2 rounded-[5px] flex items-center transition-all duration-300 border-opacity-[0.16] hover:border-opacity-50 hover:border-[#04030866] focus-within:border-opacity-100 focus-within:border-[#04030866]"
       :class="[inputClass, { '!border-red': error }]"
     >
       <div class="flex items-center w-full">

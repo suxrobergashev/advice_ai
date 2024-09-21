@@ -12,7 +12,9 @@
             class="block lg:hidden flex-shrink-0 cursor-pointer"
             @click="openSidebar = true"
           >
-            <i class="fa-solid fa-bars text-[20px] text-black ms:text-[25px]"></i>
+            <i
+              class="fa-solid fa-bars text-[20px] text-black ms:text-[25px]"
+            ></i>
           </div>
 
           <div class="items-center gap-5 cursor-pointer hidden lg:flex">

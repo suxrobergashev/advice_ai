@@ -20,7 +20,10 @@
           </p>
         </div>
         <div class="flex flex-col gap-2 ms:gap-3">
-          <a href="https://mail.google.com/mail/u/1/#inbox" class="flex items-center gap-3 cursor-pointer group">
+          <a
+            href="https://mail.google.com/mail/u/1/#inbox"
+            class="flex items-center gap-3 cursor-pointer group"
+          >
             <div
               class="icon-emailsvg text-lg transition duration-300 group-hover:!text-[#8E9DCC]"
             ></div>
@@ -44,7 +47,10 @@
               @adviceai_bot
             </p>
           </a>
-          <a href="tel:+998945360998" class="flex items-center gap-3 cursor-pointer group">
+          <a
+            href="tel:+998945360998"
+            class="flex items-center gap-3 cursor-pointer group"
+          >
             <div
               class="icon-phonesvg text-lg transition duration-300 group-hover:!text-[#8E9DCC]"
             ></div>
@@ -54,7 +60,10 @@
               + 998 94 536 09 98
             </p>
           </a>
-          <a href="https://www.instagram.com/valisher_botirov" class="flex items-center gap-3 cursor-pointer group">
+          <a
+            href="https://www.instagram.com/valisher_botirov"
+            class="flex items-center gap-3 cursor-pointer group"
+          >
             <div
               class="icon-facebook-brandssvg text-lg transition duration-300 group-hover:!text-[#8E9DCC]"
             ></div>

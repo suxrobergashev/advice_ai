@@ -1,6 +1,121 @@
 <script setup lang="ts">
 import SButton from "@/components/SButton.vue";
 import TariffCard from "@/components/card/TariffCard.vue";
+import { ITariff } from "@/types/tariff";
+
+const tariffCard: ITariff[] = [
+  {
+    id: 1,
+    type: "simple",
+    tariff: "Oddiy",
+    price: "Bepul",
+    count: 3,
+    services: [
+      {
+        id: 1,
+        title: "Advice AI dan foydalanish",
+      },
+      {
+        id: 2,
+        title: "300 ta request kunlik",
+      },
+      {
+        id: 3,
+        title: "Iqdtidorga munosib kasblarni ko'rish",
+      },
+      {
+        id: 4,
+        title: "Mutahasislik bo'yicha universetutlar ro'yxati",
+      },
+      {
+        id: 5,
+        title: "Mutahasislik bo'yicha o'quv markazlar ro'yxati",
+      },
+      {
+        id: 6,
+        title: "Mutahasislik bo'yicha online kurslar",
+      },
+      {
+        id: 7,
+        title: "Mutahasislik testlar",
+      },
+    ],
+  },
+  {
+    id: 2,
+    type: "middle",
+    tariff: "Premium",
+    price: "100 000 UZS",
+    count: 5,
+    services: [
+      {
+        id: 1,
+        title: "Advice AI dan foydalanish",
+      },
+      {
+        id: 2,
+        title: "1 000 ta request kunlik",
+      },
+      {
+        id: 3,
+        title: "Iqdtidorga munosib kasblarni ko'rish",
+      },
+      {
+        id: 4,
+        title: "Mutahasislik bo'yicha universetutlar ro'yxati",
+      },
+      {
+        id: 5,
+        title: "Mutahasislik bo'yicha o'quv markazlar ro'yxati",
+      },
+      {
+        id: 6,
+        title: "Mutahasislik bo'yicha online kurslar",
+      },
+      {
+        id: 7,
+        title: "Mutahasislik testlar",
+      },
+    ],
+  },
+  {
+    id: 3,
+    type: "gold",
+    tariff: "Premium Gold",
+    price: "150 000 UZS",
+    count: 7,
+    services: [
+      {
+        id: 1,
+        title: "Advice AI dan foydalanish",
+      },
+      {
+        id: 2,
+        title: "Cheksiz requestlar kunlik",
+      },
+      {
+        id: 3,
+        title: "Iqdtidorga munosib kasblarni ko'rish",
+      },
+      {
+        id: 4,
+        title: "Mutahasislik bo'yicha universetutlar ro'yxati",
+      },
+      {
+        id: 5,
+        title: "Mutahasislik bo'yicha o'quv markazlar ro'yxati",
+      },
+      {
+        id: 6,
+        title: "Mutahasislik bo'yicha online kurslar",
+      },
+      {
+        id: 7,
+        title: "Mutahasislik testlar",
+      },
+    ],
+  },
+];
 </script>
 
 <template>
@@ -17,15 +132,18 @@ import TariffCard from "@/components/card/TariffCard.vue";
           {{ $t("tariff") }}
         </p>
         <SButton variant="gray" class="text-base sm:text-lg"
-          >Попробовать бесплатно</SButton
-        >
+          >Demoni ishlatib ko'rish
+        </SButton>
       </div>
       <div
         class="grid grid-cols-1 md:grid-cols-3 mt-6 sm:mt-[50px] md:mt-[60px] gap-8 md:gap-0"
       >
-        <TariffCard class="md:border-r border-[#9696964D]" />
-        <TariffCard class="md:border-r border-[#9696964D]" type="middle" />
-        <TariffCard type="gold" />
+        <TariffCard
+          v-for="item in tariffCard"
+          class="md:border-r border-[#9696964D]"
+          v-bind:key="item.id"
+          :data="item"
+        />
       </div>
     </div>
   </div>

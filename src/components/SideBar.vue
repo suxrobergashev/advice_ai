@@ -8,7 +8,7 @@
         @click="emit('closeSidebar', false)"
         class="fa-sharp fa-solid fa-xmark text-white text-2xl top-10 right-10 absolute"
       ></i>
-      <div class="text-center gap-6 text-lg text-white ">
+      <div class="text-center gap-6 text-lg text-white">
         <div v-for="item in link" :key="item">
           <a
             :href="`#${item.link}`"

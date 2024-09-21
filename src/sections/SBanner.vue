@@ -61,7 +61,7 @@
           >
             Bizni xoziroq sinab ko'rishingiz mumkin
           </p>
-          <SButton variant="white">Попробовать бесплатно </SButton>
+          <SButton variant="white">Sinab ko'rish</SButton>
         </div>
       </div>
     </div>

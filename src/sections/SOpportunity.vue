@@ -13,32 +13,31 @@
       >
         <div class="relative flex items-center">
           <img
-            src="@/assets/images/fake-images/fake1.jpg"
+            src="@/assets/images/advice1.webp"
             alt="images"
             class="w-[220px] ms:w-[280px] sm:w-[308px] h-[130px] ms:h-[160px] sm:h-[180px] object-cover rounded-[13px]"
           />
           <img
-            src="@/assets/images/fake-images/fake2.jpg"
+            src="@/assets/images/advice2.jpg"
             alt="images"
             class="w-[150px] sm:w-[216px] h-[210px] ms:h-[280px] sm:h-[330px] object-cover rounded-[11px] translate-x-[-80px]"
           />
         </div>
         <OppornutunityInfo
-          desc="Создавайте качественные статьи, документы, блоги,
-рекламные текста, письма и другие виды контента."
-          title="Генерация текстов и документов"
+          desc="Advice AI yordamida siz iqtidorlaringizni aniqlab olish va o'zingizga munosib mutahassislikni  bilib olishingiz mumkin!"
+          title="AI yordamida iqtidorni aniqlash"
         />
       </div>
       <div
         class="border-t border-[#DEDED8] flex flex-col-reverse lg:grid gap-6 sm:gap-[50px] lg:gap-[90px] lg:grid-cols-2 items-center pt-6 sm:pt-10 mt-8 sm:mt-[60px]"
       >
         <OppornutunityInfo
-          desc="Изучайте английский язык, корректируйте грамматику, готовьтесь к тестам и улучшайте знание языка."
-          title="Помощь в изучении английского языка"
+          desc="Sun'iy intellektga asoslangan maslahatchi muloqot davomida sizning iqtidoringizni aniqlab, iqtidoringizga munosib kasblarga yo'naltiradi"
+          title="Iqtidoringizga munosib kasbga yo'naltirish"
         />
         <div class="">
           <img
-            src="@/assets/images/fake-images/fake4.jpg"
+            src="@/assets/images/advice3.jpg"
             alt="images"
             class="rounded-[20px] w-full h-[200px] ms:h-[300px] object-cover sm:h-[400px] lg:max-h-[470px] lg:h-full"
           />
@@ -48,47 +47,36 @@
         class="border-t border-[#DEDED8] grid grid-cols-1 gap-6 sm:gap-10 lg:gap-0 lg:grid-cols-2 items-center pt-6 sm:pt-10 mt-8 sm:mt-[60px]"
       >
         <div class="flex justify-center sm:justify-start mt-10 translate-x-10">
-          <img
-            src="@/assets/images/fake-images/fake6.jpg"
-            alt="images"
-            class="rounded-[20px] w-[180px] ms:w-[200px] sm:!w-[242px] object-cover h-[220px] sm:h-[279px]"
-          />
-          <img
-            src="@/assets/images/fake-images/fake5.jpg"
-            alt="images"
-            class="rounded-[20px] w-[180px] ms:w-[200px] sm:!w-[242px] object-cover h-[220px] sm:!h-[279px] -translate-y-8 ms:-translate-y-10 -translate-x-20"
-          />
+          <div class="">
+            <img
+              src="@/assets/images/advice4.jpg"
+              alt="images"
+              class="rounded-[20px] w-full h-[200px] ms:h-[300px] object-cover sm:h-[400px] lg:max-h-[470px] lg:h-full"
+            />
+          </div>
         </div>
         <OppornutunityInfo
-          desc="Saiora позволяет писать код на разных языках
-программирования, создавать тесты для кода
-находить ошибки, чтобы улучшить вашу работу."
-          title="Помощь в программировании"
+          desc="Advice AI iqtidoringizga mos kasbni o'rganishingiz uchun O'zbekiston va chet el universetutlarini yokida mahalliy kasbga yo'naltirilga o'quv markazlarni taqdim etadi"
+          title="Kasb egallashingiz uchun universetut va o'quv markazlar ro'yxati"
         />
       </div>
       <div
         class="border-t border-[#DEDED8] flex flex-col-reverse lg:grid gap-10 sm:gap-[100px] lg:gap-[90px] lg:grid-cols-2 items-center pt-6 sm:pt-16 mt-8 sm:mt-[60px]"
       >
         <OppornutunityInfo
-          desc="Saiora поможет вам провести анализ рынка,
-разработать бизнес-стратегию, создать
-маркетинговые стратегии, составить финансовый
-план, управлять проектами, набрать команду,
-оптимизировать бизнес-процессы и многое другое
-для развития вашего бизнеса.."
-          title="Помощь с ведением и
-развитием бизнеса"
+          desc="Advice AI iqtidoringizga mos kasbni o'rganishingiz uchun mahalliy va global bozordagi top online kurslarni taqdim etadi"
+          title="Mutahassislik bo'yicha mahalliy va global online kurslar"
         />
         <div
           class="flex lg:translate-y-[-29px] translate-x-[20px] sm:translate-x-[0]"
         >
           <img
-            src="@/assets/images/fake-images/fake1.jpg"
+            src="@/assets/images/advice3.jpg"
             alt="images"
             class="rounded-[20px] w-[180px] ms:w-[200px] sm:!w-[380px] object-cover h-[220px] sm:h-[270px]"
           />
           <img
-            src="@/assets/images/fake-images/fake7.jpg"
+            src="@/assets/images/advice5.jpg"
             alt="images"
             class="rounded-[20px] w-[180px] ms:w-[200px] sm:!w-[380px] object-cover h-[220px] sm:!h-[270px] translate-y-[20px] sm:translate-y-[69px] translate-x-[-100px] sm:translate-x-[-300px]"
           />
@@ -99,14 +87,14 @@
       >
         <div class="">
           <img
-            src="@/assets/images/fake-images/fake4.jpg"
+            src="@/assets/images/advice1.webp"
             alt="images"
             class="rounded-[20px] w-full h-[200px] ms:h-[300px] object-cover sm:h-[400px] lg:max-h-[470px] lg:h-full"
           />
         </div>
         <OppornutunityInfo
-          desc="Изучайте английский язык, корректируйте грамматику, готовьтесь к тестам и улучшайте знание языка."
-          title="Помощь в изучении английского языка"
+          desc="Advice AI sizga o'z mutahasisligingizni yanada mustahkamlsh uchun online testlarni taqdim etadi va tekshirib o'z xulosasini aytadi"
+          title="Sohaviy bilimlarni mustahkamlash uchun online testlar"
         />
       </div>
     </div>

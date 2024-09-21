@@ -23,7 +23,7 @@ defineProps<Props>();
     <a
       href="#"
       class="cursor-pointer text-[#49549D] leading-[30px] font-bold mt-4 ms:mt-6 sm:mt-10 lg:mt-12 hover:text-blue-800 inline-block"
-      >Подробнее</a
+      >Batafsil malumot</a
     >
   </div>
 </template>

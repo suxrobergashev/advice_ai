@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import TapirWidget from "vue-audio-tapir";
 import "vue-audio-tapir/dist/vue-audio-tapir.css";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import SButton from "@/components/SButton.vue";
+import { useFirstQuestion } from "../../store/first-question";
 
 const textAI = ref("");
+
+const firstQuestionStore = useFirstQuestion();
 
 const submitText = () => {
   console.log(textAI.value, "text ai value");
@@ -18,6 +21,10 @@ const finishRecord = (audio: Blob) => {
   console.log(audio, "audio");
   document.querySelector(".vue-audio button")?.click();
 };
+
+onMounted(() => {
+  firstQuestionStore.fetchFirstQuestion();
+});
 </script>
 
 <template>
@@ -46,6 +53,7 @@ const finishRecord = (audio: Blob) => {
           <div class="absolute bottom-4 right-4 w-full flex justify-between">
             <div></div>
             <div class="flex items-center gap-4">
+
               <div class="group cursor-pointer">
                 <i
                   class="fa-solid fa-microphone text-blue-500 transition-all duration-300 group-hover:text-blue-700 text-2xl"

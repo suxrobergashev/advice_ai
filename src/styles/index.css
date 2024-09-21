@@ -139,6 +139,20 @@ html {
 }
 
 /*vue audio*/
+.vue-audio {
+  @apply !shadow-none !p-0;
+}
+
+.vue-audio:nth-child(2) {
+  @apply shrink-0;
+}
+.vue-audio:nth-child(5),
+.vue-audio:nth-child(4) {
+  @apply hidden;
+}
+.vue-audio figure {
+  @apply hidden;
+}
 .vue-audio h2 {
   display: none;
 }
@@ -149,5 +163,5 @@ html {
   @apply text-gray-700;
 }
 .vue-audio button {
-  @apply w-0 h-0 opacity-0 overflow-hidden;
+  @apply w-0 h-0 opacity-0 overflow-hidden p-0;
 }

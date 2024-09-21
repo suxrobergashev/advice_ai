@@ -8,7 +8,7 @@ from exceptions.error_messages import ErrorCodes
 from exceptions.exception import CustomApiException
 from .models import Users, Chat, Questions
 from .serializers import UserSerializer, LoginSerializer, TokenSerializer, QuestionSerializer, AnswerSerializer
-
+from .utils import get_active_chat, get_random_question
 
 
 class RegisterView(ViewSet):
@@ -47,9 +47,9 @@ class RegisterView(ViewSet):
 
 class QuestionViewSet(ViewSet):
     @swagger_auto_schema(
-        responses={201: QuestionSerializer()}
+        responses={201: QuestionSerializer()},
     )
-    def create(self, request):
+    def create_chat(self, request):
         user = request.user
 
         if get_active_chat(user):

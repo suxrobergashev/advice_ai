@@ -4,6 +4,7 @@ from .models import Summary
 from django.conf import settings
 from exceptions.error_messages import ErrorCodes
 from exceptions.exception import CustomApiException
+from .models import Questions, Chat
 
 def save_summary_audio(user, transcript, summary_text):
     """
@@ -44,3 +45,10 @@ def save_summary_audio(user, transcript, summary_text):
         return summary_instance
     else:
         raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='There was a problem connecting')
+
+
+def get_active_chat(user):
+    return Chat.objects.filter(user=user, is_closed=False).first()
+
+def get_random_question(exclude_ids):
+    return Questions.objects.exclude(id__in=exclude_ids).order_by('?').first()

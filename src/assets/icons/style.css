@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?qgdt7w');
+  src:  url('fonts/icomoon.eot?qgdt7w#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?qgdt7w') format('truetype'),
+    url('fonts/icomoon.woff?qgdt7w') format('woff'),
+    url('fonts/icomoon.svg?qgdt7w#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-email:before {
+  content: "\e903";
+  color: #fff;
+}
+.icon-facebook:before {
+  content: "\e90c";
+  color: #fff;
+}
+.icon-instagram:before {
+  content: "\e90b";
+  color: #fff;
+}
+.icon-check:before {
+  content: "\e90a";
+  color: #21ae2e;
+}
+.icon-Artboard-1:before {
+  content: "\e900";
+  color: #fff;
+}
+.icon-Artboard-1-copy-3:before {
+  content: "\e901";
+  color: #fff;
+}
+.icon-Artboard-1-copy-2:before {
+  content: "\e902";
+  color: #fff;
+}
+.icon-facebook-brandssvg:before {
+  content: "\e904";
+  color: #fff;
+}
+.icon-phonesvg:before {
+  content: "\e905";
+  color: #fff;
+}
+.icon-telegramsvg:before {
+  content: "\e906";
+  color: #fff;
+}
+.icon-emailsvg:before {
+  content: "\e907";
+  color: #fff;
+}
+.icon-Artboard-1-copy1:before {
+  content: "\e908";
+  color: #fff;
+}
+.icon-Artboard-1-copy:before {
+  content: "\e909";
+  color: #fff;
+}

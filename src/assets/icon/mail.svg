@@ -1,0 +1,26 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="mail.svg" clip-path="url(#clip0_115_1840)">
+<path id="Vector" d="M63.7014 32C63.7014 14.4917 49.5082 0.298523 32 0.298523C14.4917 0.298523 0.298523 14.4917 0.298523 32C0.298523 49.5082 14.4917 63.7014 32 63.7014C49.5082 63.7014 63.7014 49.5082 63.7014 32Z" fill="white" stroke="#DDE1E5" stroke-width="0.597065"/>
+<g id="Clip path group">
+<mask id="mask0_115_1840" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="14" y="18" width="36" height="28">
+<g id="clip0_4566_94533">
+<path id="Vector_2" d="M50 18H14V46H50V18Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_115_1840)">
+<g id="Group">
+<path id="Vector_3" d="M16.4545 46.0001H22.1818V31.5758L14 25.2122V43.4546C14 44.8631 15.1004 46.0001 16.4545 46.0001Z" fill="#4285F4"/>
+<path id="Vector_4" d="M41.8182 46.0001H47.5454C48.9036 46.0001 50 44.8589 50 43.4546V25.2122L41.8182 31.5758" fill="#34A853"/>
+<path id="Vector_5" d="M41.8182 20.5454V31.5757L50 25.2121V21.8181C50 18.6703 46.535 16.8757 44.1091 18.7636" fill="#FBBC04"/>
+<path id="Vector_6" d="M22.1818 31.5758V20.5455L32 28.1818L41.8182 20.5455V31.5758L32 39.2122" fill="#EA4335"/>
+<path id="Vector_7" d="M14 21.8181V25.2121L22.1818 31.5757V20.5454L19.8909 18.7636C17.4609 16.8757 14 18.6703 14 21.8181Z" fill="#C5221F"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_115_1840">
+<rect width="64" height="64" fill="white"/>
+</clipPath>
+</defs>
+</svg>

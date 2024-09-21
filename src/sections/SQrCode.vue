@@ -7,7 +7,7 @@
         <h2
           class="text-2xl leading-[30px] pt-3 ms:pt-[16.5px] flex flex-wrap ms:text-[43px] ms:leading-[55px] lg:!text-[53.5px] sm:max-w-[530px] lg:leading-[66px] lg:pt-[26.5px] font-[800]"
         >
-          Скачать мобильное приложение Chat.im
+          Advice AI ning mobil ilovasini yuklab oling!
         </h2>
         <div
           class="flex items-center pt-[10px] lg:pt-[36px] gap-4 ms:gap-[25px]"
@@ -23,7 +23,7 @@
             <p
               class="text-base ms:text-lg lg:text-[25px] font-medium leading-5 ms:leading-7 lg:leading-[32.2px]"
             >
-              Наведите камеру и скачайте приложение Chat.im
+              Kamera orqali skaner qiling va mobil ilovani yuklab oling
             </p>
 
             <div class="flex gap-4 mt-2">

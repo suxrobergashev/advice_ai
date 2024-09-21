@@ -6,17 +6,18 @@
       >
         <div class="ms:col-span-3 dm:col-span-2">
           <h2
-            class="text-[#FF5C00] max-w-[210px] font-bold uppercase text-xl ms:text-[28px] leading-7 ms:leading-[33.843px] tracking-[0.846px]"
+            class="text-[#FF5C00] max-w-[210px] font-bold uppercase text-xl ms:text-[28px] leading-7 ms:leading-[33.843px] tracking-[0.846px] uppercase"
           >
-            ПОДДЕРЖКА И ОБНОВЛЕНИЕ
+            Yordam va yangilanishlar
           </h2>
           <p
             class="mt-2 ms:mt-7 text-[#8E8E8E] leading-[16.598px] text-xs pr-5"
           >
-            Мы готовы помочь и оказать поддержку каждому клиенту в установке и
-            использовании Chat.im. Наш центр поддержки работает только по будням
-            с понедельника по пятницу. Пожалуйста, учитывайте, что мы можем не
-            ответить вам в выходные.
+            Biz har bir mijozga Advice AI o'rnatish va undan foydalanishda
+            yordam berishga va qo'llab-quvvatlashga tayyormiz. Bizning
+            qo'llab-quvvatlash markazimiz dushanbadan jumagacha faqat ish
+            kunlarida ishlaydi. Dam olish kunlarida sizga javob bermasligimiz
+            mumkinligini unutmang.
           </p>
         </div>
         <div class="flex flex-col gap-2 ms:gap-3">
@@ -107,10 +108,10 @@
       <div
         class="flex items-center flex-col gap-4 ms:gap-0 ms:flex-row justify-between mt-10 ms:mt-[60px]"
       >
-        <SButton variant="black" class="w-full ms:w-auto">Напишите нам</SButton>
+        <SButton variant="black" class="w-full ms:w-auto">Bizga yozing</SButton>
         <div class="w-full ms:w-auto">
           <div class="flex justify-between ms:items-center gap-5">
-            <p>Мы в соц. сетях:</p>
+            <p>Bizni kuzatib boring:</p>
             <div class="flex items-center gap-5">
               <a
                 href="https://t.me/Botirov_Valisher"

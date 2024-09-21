@@ -52,8 +52,8 @@ class Summary(models.Model):
 
 class Chat(models.Model):
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
-    question = models.ManyToManyField(Questions, null=True, blank=True)
-    answer = models.ManyToManyField(Answer, null=True, blank=True)
+    question = models.ManyToManyField(Questions, blank=True)
+    answer = models.ManyToManyField(Answer, blank=True)
     question_count = models.IntegerField(default=0)
     summary = models.ForeignKey(Summary, on_delete=models.CASCADE)
     is_closed = models.BooleanField(default=False)

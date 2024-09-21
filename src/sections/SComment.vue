@@ -54,7 +54,7 @@
         </swiper>
       </div>
       <div class="flex justify-end mt-4 ms:mt-8">
-        <SButton variant="light">Добавить комментарий</SButton>
+        <SButton variant="light">Fikr yuborish</SButton>
       </div>
     </div>
   </div>

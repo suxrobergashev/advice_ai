@@ -1,43 +1,42 @@
 <template>
   <div class="px-10 sm:px-[100px] h-[100vh] flex flex-col justify-center">
     <div class="text-[#49549D]">
-      <p class="text-[#49549D] text-[32px] font-bold">Создать аккаунт</p>
+      <p class="text-[#49549D] text-[32px] font-bold">Hisob yaratish</p>
       <p class="text-[#312ECB] ms:mt-1">
-        Уже есть аккаунт?
+        Hisobingiz mavjudmi?
         <router-link to="/login" class="font-medium hover:text-[#49549D]"
-          >Войти</router-link
+          >Kirish</router-link
         >
       </p>
     </div>
     <div class="mt-5 sm:mt-10">
       <div class="flex flex-col ms:flex-row gap-4 ms:gap-[30px]">
-        <SInput v-model="form.name" placeholder="Имя" />
-        <SInput v-model="form.surname" placeholder="Фамилия" />
+        <SInput v-model="form.name" placeholder="Ism" />
+        <SInput v-model="form.surname" placeholder="Familiya" />
       </div>
-      <SInput v-model="form.email" placeholder="Email" class="mt-4" />
+      <SInput v-model="form.email" placeholder="Telefon raqam" class="mt-4" />
       <SInput
         v-model="form.password"
         type="password"
-        placeholder="Пароль"
+        placeholder="Parol"
         class="mt-4"
       />
       <div class="flex items-center gap-3 mt-4">
         <input type="checkbox" class="w-4 h-4" v-model="form.isCheck" />
         <p class="text-[#312ECB] text-xs sm:text-sm ms:max-w-[360px]">
-          Я согласен с
           <router-link
             to="/privacy_police"
             class="hover:text-[#49549D] hover:!font-medium"
           >
-            Условиями обслуживания и Политикой конфиденциальности
+            Advice AI ning Foydalanish shartlari va Maxfiylik siyosatiga rozilik
+            bildiraman
           </router-link>
-          Chat.im
         </p>
       </div>
-      <SButton class="mt-5 sm:mt-[30px] rounded-[5px]">Создать аккаунт</SButton>
+      <SButton class="mt-5 sm:mt-[30px] rounded-[5px]">Hisob yaratish</SButton>
       <div class="mt-5 sm:mt-[30px] flex items-center gap-3">
         <div class="h-[1px] bg-[#04030866] w-full"></div>
-        <p class="text-[#49549D]">или</p>
+        <p class="text-[#49549D]">yoki</p>
         <div class="h-[1px] bg-[#04030866] w-full"></div>
       </div>
       <div class="mt-5 sm:mt-[30px]">
@@ -45,7 +44,7 @@
           <div class="flex items-center gap-2">
             <GoogleSVG />
             <p class="font-semibold text-base text-[#49549D]">
-              Войти через Google
+              Google orqali kirish
             </p>
           </div>
         </SButton>
@@ -56,11 +55,10 @@
           <div class="flex items-center gap-2">
             <AppleSVG />
             <p class="font-semibold text-base text-[#49549D]">
-              Войти через Appl
+              Apple orqali kirish
             </p>
           </div>
-          e</SButton
-        >
+        </SButton>
       </div>
     </div>
   </div>

@@ -4,12 +4,14 @@
       <div class="container relative z-[20]">
         <div class="flex justify-between items-center">
           <router-link to="/">
-            <img src="@/assets/icon/logo_dark.svg" alt="logo" />
+            <!--            <img src="@/assets/icon/logo_dark.svg" alt="logo" />-->
+            <p class="font-bold text-[38px] !text-gray-700">Advice AI</p>
+
           </router-link>
 
           <div class="flex flex-shrink-0 items-center gap-3">
             <div class="flex">
-              <div v-for="item in langs" :key="item">
+              <div v-for="item in langs" :key="item.label">
                 <div
                   class="flex justify-center items-center px-2 w-8 h-8 rounded-[50%] text-[#141920] text-xs cursor-pointer font-[700]"
                   :class="activeLang.value == item.value ? 'bg-white' : ''"

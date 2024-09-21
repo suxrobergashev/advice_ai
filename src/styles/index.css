@@ -10,7 +10,7 @@ html {
   font-family: "Gilroy", sans-serif;
   min-height: 100vh;
   font-size: 16px;
-  background-color: #F2F2F2;
+  background-color: #f5f5ff;
 }
 body {
   width: 100vw;
@@ -134,6 +134,20 @@ html {
 .el-input__wrapper {
   @import "!my-2 ms:!my-3";
 }
-.el-input__inner{
+.el-input__inner {
   height: 44px !important;
+}
+
+/*vue audio*/
+.vue-audio h2 {
+  display: none;
+}
+.vue-audio svg {
+  @apply fill-blue-500;
+}
+.vue-audio div {
+  @apply text-gray-700;
+}
+.vue-audio button {
+  @apply w-0 h-0 opacity-0 overflow-hidden;
 }

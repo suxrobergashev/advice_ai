@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-[#dbd9d6cc] py-6">
+    <div class="bg-[#EAEAFE] py-6">
       <div class="container relative z-[20]">
         <SideBar
           :is-open="openSidebar"

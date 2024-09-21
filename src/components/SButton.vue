@@ -1,6 +1,6 @@
 <template>
   <div
-    class="cursor-pointer select-none flex justify-center text-sm ms:text-base items-center py-[10px] px-[18px] ms:px-4 rounded-xl font-medium transition duration-300 active:scale-[0.95]"
+    class="cursor-pointer select-none flex justify-center text-sm ms:text-base items-center py-[10px] px-[18px] ms:px-4 rounded-xl font-medium transition duration-300 active:scale-[0.95] disabled:cursor-not-allowed disabled:opacity-[0.8]"
     :class="[customClass, buttonStyle]"
   >
     <slot></slot>
@@ -14,6 +14,7 @@ import { computed } from "vue";
 interface Props {
   customClass?: string;
   variant: string;
+  disabled?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {

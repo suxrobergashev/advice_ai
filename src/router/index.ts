@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import LDefault from "@/layout/LDefault.vue"
+import LDefault from "@/layout/LDefault.vue";
 import LSingle from "@/layout/LSingle.vue";
 import LAuth from "@/layout/LAuth.vue";
 
@@ -11,53 +11,59 @@ const routes = [
     component: () => import("@/pages/HomePage.vue"),
   },
   {
-    path:"/privacy_police",
-    mame:"privacy",
+    path: "/privacy_police",
+    mame: "privacy",
     meta: { layout: LSingle },
-    component:()=> import("@/pages/PrivacyPolice.vue")
+    component: () => import("@/pages/PrivacyPolice.vue"),
   },
   {
-    path:"/terms_use",
-    mame:"use",
+    path: "/terms_use",
+    mame: "use",
     meta: { layout: LSingle },
-    component:()=> import("@/pages/TermUse.vue")
+    component: () => import("@/pages/TermUse.vue"),
   },
   {
     path: "/faq",
-    name:"faq",
+    name: "faq",
     meta: { layout: LSingle },
-    component:()=> import("@/pages/FaqPage.vue")
+    component: () => import("@/pages/FaqPage.vue"),
   },
   {
-    path:"/login",
-    name:"sign-in",
+    path: "/login",
+    name: "sign-in",
     meta: { layout: LAuth },
-    component:() => import("@/pages/auth/SLogin.vue")
+    component: () => import("@/pages/auth/SLogin.vue"),
   },
   {
-    path:"/sign-up",
-    name:"sign-up",
+    path: "/sign-up",
+    name: "sign-up",
     meta: { layout: LAuth },
-    component:() => import("@/pages/auth/SRegister.vue")
+    component: () => import("@/pages/auth/SRegister.vue"),
   },
   {
-    path:"/forgot",
-    name:"forgot",
+    path: "/forgot",
+    name: "forgot",
     meta: { layout: LAuth },
-    component:() => import("@/pages/auth/ResetPassword/FirstStep.vue")
+    component: () => import("@/pages/auth/ResetPassword/FirstStep.vue"),
   },
   {
-    path:"/forgot/step1",
-    name:"forgot-step1",
+    path: "/forgot/step1",
+    name: "forgot-step1",
     meta: { layout: LAuth },
-    component:() => import("@/pages/auth/ResetPassword/SecondStep.vue")
+    component: () => import("@/pages/auth/ResetPassword/SecondStep.vue"),
   },
   {
-    path:"/reset",
-    name:"reset",
+    path: "/reset",
+    name: "reset",
     meta: { layout: LAuth },
-    component:() => import("@/pages/auth/ResetPassword.vue")
-  }
+    component: () => import("@/pages/auth/ResetPassword.vue"),
+  },
+  {
+    path: "/advice",
+    name: "advice-chat",
+    meta: { layout: LDefault },
+    component: () => import("@/pages/AdviceAI.vue"),
+  },
 ];
 
 const router = createRouter({

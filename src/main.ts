@@ -9,7 +9,9 @@ import router from "./router";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
-// i18n
+// pinia
+
+const pinia = createPinia()
 
 // maska;
 import Maska from "maska";

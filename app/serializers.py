@@ -1,6 +1,10 @@
-from .models import Users, Questions, Answer, Chat, Summary
-from rest_framework import serializers
+from concurrent.futures import ThreadPoolExecutor
+
 import requests
+from django.conf import settings
+from rest_framework import serializers
+
+from .models import Users, Questions, Answer, Summary
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -51,7 +55,7 @@ class AnswerSerializer(serializers.ModelSerializer):
         Function to send the audio file to the external API for transcription.
         This is executed in a background thread to avoid blocking the main thread.
         """
-        url = 'https://1bb5-94-158-59-178.ngrok-free.app/apis/stt/post/'
+        url = f'{settings.BASE_URL}/apis/stt/post/'
         files = {'audio': ('tim_original.mp3', audio_file.read(), 'audio/mpeg')}
 
         try:

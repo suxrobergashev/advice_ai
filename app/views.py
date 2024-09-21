@@ -8,7 +8,7 @@ from exceptions.error_messages import ErrorCodes
 from exceptions.exception import CustomApiException
 from .models import Users, Chat, Questions
 from .serializers import UserSerializer, LoginSerializer, TokenSerializer, QuestionSerializer, AnswerSerializer
-from .utils import get_random_question, get_active_chat
+
 
 
 class RegisterView(ViewSet):

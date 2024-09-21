@@ -1,6 +1,10 @@
 from pathlib import Path
 import os
 from datetime import timedelta
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -8,12 +12,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-uoqg9b7uxfa=9h*596&c(=5s$#m+1q-3+c!dohyzg75z75f&7%'
+os.getenv('DJANGO_SECRET_KEY','django-insecure-uoqg9b7uxfa=9h*596&c(=5s$#m+1q-3+c!dohyzg75z75f&7%')
+# SECRET_KEY = 'django-insecure-uoqg9b7uxfa=9h*596&c(=5s$#m+1q-3+c!dohyzg75z75f&7%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.getenv('DEBUG', 1))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(',')
 
 # Application definition
 
@@ -154,3 +159,5 @@ SWAGGER_SETTINGS = {
     'LOGIN_URL': 'api/v1/auth/login',
     "DEFAULT_MODEL_RENDERING": "example"
 }
+
+BASE_URL=os.getenv('BASE_URL', '')

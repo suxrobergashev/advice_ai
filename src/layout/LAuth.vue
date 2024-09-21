@@ -1,4 +1,5 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
   <div
@@ -8,11 +9,12 @@
       class="hidden md:flex bg-[#49549D] p-10 dm:p-[100px] flex-col justify-between auth-section"
     >
       <div class="flex">
-        <img src="@/assets/icon/logo.svg" alt="logo" />
+<!--        <img src="@/assets/icon/logo.svg" alt="logo" />-->
+        <p class="font-bold text-[40px]">Advice AI</p>
       </div>
       <div>
-        <p class="font-bold text-[40px]">Chat.im</p>
-        <p class="mt-3 dm:mt-5 text-2xl">Платформа для связи с клиентами</p>
+        <p class="font-bold text-[40px]">Advice AI</p>
+        <p class="mt-3 dm:mt-5 text-2xl">Iqtidoringizni aniqlash uchun platforma!</p>
       </div>
     </div>
     <div>

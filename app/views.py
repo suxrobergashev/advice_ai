@@ -134,22 +134,13 @@ class SummaryViewSet(ViewSet):
         Retrieves an active chat for the user, sends chat content to an API for analysis,
         and creates an audio summary.
         """
-        # Get active chat for the user
         chat = get_active_chat(request.user)
         if not chat:
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Chat does not exist')
 
-        # Extract questions and answers
-        questions = chat.question.values_list("question", flat=True)
-        answers = chat.answer.values_list("answer", flat=True)
-
-        # Prepare messages for the API
-        # Send data to external API for processing
         analysis_result = get_user_character_and_profession(chat.get_answers())
 
-        # Save the generated summary and create an audio file
         summary_instance = save_summary_audio(request.user, transcript=analysis_result, summary_text=analysis_result, chat=chat)
 
-        # Serialize the summary instance and return the response
         serializer = SummarySerializer(summary_instance, context={'request': request})
         return Response({'result': serializer.data, 'ok': True}, status=status.HTTP_200_OK)

@@ -16,3 +16,12 @@ class AnswerAdmin(admin.ModelAdmin):
 @admin.register(Questions)
 class QuestionsAdmin(admin.ModelAdmin):
     list_display = ('id', 'question')
+
+
+@admin.register(Chat)
+class ChatAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Summary)
+class SummaryAdmin(admin.ModelAdmin):
+    pass

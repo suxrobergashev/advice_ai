@@ -56,8 +56,9 @@ class QuestionViewSet(ViewSet):
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Chat already exists')
 
         chat = Chat.objects.create(user=user)
-        question = get_random_question([])  # No excluded questions initially
-        chat.add(question)
+        chat.save()
+        question = get_random_question([])
+        chat.question.add(question)
         chat.question_count = 1
         chat.save()
 
@@ -75,7 +76,7 @@ class QuestionViewSet(ViewSet):
             raise CustomApiException(ErrorCodes.NOT_FOUND)
 
         question = get_random_question(chat.question.values_list('id', flat=True))
-        chat.add_question(question)
+        chat.question.add(question)
         chat.question_count += 1
         chat.save()
 
@@ -103,7 +104,7 @@ class AnswerViewSet(ViewSet):
         if not serializer.is_valid():
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message=serializer.errors)
         serializer.save()
-        chat.add(serializer.data)
+        chat.answer.add(serializer.data)
         chat.save()
         return Response({'result': serializer.data, 'ok': True}, status=status.HTTP_200_OK)
 

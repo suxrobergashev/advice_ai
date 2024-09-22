@@ -55,7 +55,7 @@ class QuestionViewSet(ViewSet):
         chat = get_active_chat(user)
         if chat:
             chat.question.clear()
-            chat.answers.clear()
+            chat.answer.clear()
             # Reset question count
             chat.question_count = 0
             chat.save()

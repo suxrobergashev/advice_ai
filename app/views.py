@@ -96,7 +96,7 @@ class AnswerViewSet(ViewSet):
         chat = get_active_chat(request.user)
         if not chat:
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Chat does not exist')
-        if not chat.question.values_list('id', flat=True) in pk:
+        if pk not in chat.question.values_list('id', flat=True):
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Question does not exist')
         data = request.data.cope()
         data = data.update({'user': request.user, 'question': pk})

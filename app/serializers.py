@@ -38,6 +38,9 @@ class AnswerSerializer(serializers.ModelSerializer):
         fields = ('id', 'question', 'answer', 'user', 'answer_audio')
 
     def create(self, validated_data):
+        # Save the initial answer with placeholder for the audio transcription
+        answer = super().create(validated_data)
+
         # Check if 'answer_audio' is present
         if 'answer_audio' in validated_data:
             audio_file = validated_data['answer_audio']
@@ -45,10 +48,9 @@ class AnswerSerializer(serializers.ModelSerializer):
             # Process audio asynchronously
             with ThreadPoolExecutor() as executor:
                 future = executor.submit(self.process_audio, audio_file)
-                future.add_done_callback(self.update_answer_with_transcription(future, validated_data))
+                future.add_done_callback(self.update_answer_with_transcription(answer.id))
 
-        # If 'answer' is already provided, it will be used as is
-        return super().create(validated_data)
+        return answer
 
     def process_audio(self, audio_file):
         """
@@ -65,7 +67,7 @@ class AnswerSerializer(serializers.ModelSerializer):
         except requests.RequestException as e:
             return None  # Return None if transcription fails
 
-    def update_answer_with_transcription(self, future, validated_data):
+    def update_answer_with_transcription(self, answer_id):
         """
         Callback function to update the `answer` field with the transcription
         once the audio processing is complete.
@@ -73,20 +75,17 @@ class AnswerSerializer(serializers.ModelSerializer):
 
         def callback(future):
             transcription = future.result()
+            answer = Answer.objects.get(id=answer_id)
+
+            # Update the answer with the transcription result
             if transcription:
-                validated_data['answer'] = transcription
+                answer.answer = transcription
             else:
-                validated_data['answer'] = 'Failed to process audio'
-            self.save_answer(validated_data)
+                answer.answer = 'Failed to process audio'
+
+            answer.save()
 
         return callback
-
-    def save_answer(self, validated_data):
-        """
-        Save the validated answer data after transcription is completed.
-        """
-        Answer.objects.create(**validated_data)
-
 
 class SummarySerializer(serializers.ModelSerializer):
     class Meta:

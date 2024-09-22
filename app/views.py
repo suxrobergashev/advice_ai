@@ -99,13 +99,21 @@ class AnswerViewSet(ViewSet):
         if pk not in chat.question.values_list('id', flat=True):
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Question does not exist')
         data = request.data.copy()
-        data = data.update({'user': request.user, 'question': pk})
+        data.update({'user': request.user.id, 'question': pk})
+
+        # If 'answer_audio' is provided but 'answer' is not, add a placeholder
+        if 'answer_audio' in data and 'answer' not in data:
+            data.update({'answer': 'Processing audio transcription...'})
+        print(data)
         serializer = AnswerSerializer(data=data, context={'request':request})
         if not serializer.is_valid():
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message=serializer.errors)
-        serializer.save()
-        chat.answer.add(serializer.data)
+        answer_instance = serializer.save()
+
+        # Add the actual Answer instance to the chat, not the serialized data
+        chat.answer.add(answer_instance)
         chat.save()
+
         return Response({'result': serializer.data, 'ok': True}, status=status.HTTP_200_OK)
 
 

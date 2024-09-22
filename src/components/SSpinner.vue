@@ -1,8 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface props {
+  className?: string;
+}
+
+withDefaults(defineProps<props>(), {
+  className: "stroke-white",
+});
+</script>
 
 <template>
   <div aria-label="Loading..." role="status">
-    <svg class="h-6 w-6 animate-spin stroke-white" viewBox="0 0 256 256">
+    <svg class="h-6 w-6 animate-spin" :class="className" viewBox="0 0 256 256">
       <line
         x1="128"
         y1="32"

@@ -122,17 +122,25 @@ onMounted(() => {
             </div>
           </div>
         </label>
-        <div class="relative basis-[35%] w-full h-full">
+        <div class="relative basis-[35%] w-full min-h-[180px]">
           <tapir-widget
             :time="5"
             :customUpload="uploadAudio"
             :afterRecording="finishRecord"
             :backendEndpoint="`http://34.29.101.105:8888/api/v1/answer/${firstQuestionStore.first_question?.id}/`"
             buttonColor="blue"
-            class="vue-audio w-full h-full rounded-2xl"
+            class="vue-audio w-full !h-full rounded-2xl"
           />
-          <div class="absolute w-full h-full flex justify-center items-center">
-            <SSpinner v-if="firstQuestionStore.loading" />
+          <div
+            class="absolute top-0 w-full h-full flex justify-center items-center"
+            :class="
+              nextQuestionStore.loading ? 'bg-[#F0F0FC] z-[10]' : 'z-[-1]'
+            "
+          >
+            <SSpinner
+              className="stroke-black"
+              v-if="nextQuestionStore.loading"
+            />
           </div>
         </div>
       </div>

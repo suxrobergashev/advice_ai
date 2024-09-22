@@ -52,10 +52,19 @@ class QuestionViewSet(ViewSet):
     def create_chat(self, request):
         user = request.user
 
-        if get_active_chat(user):
-            raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Chat already exists')
+        chat = get_active_chat(user)
+        if chat:
+            # Clear previous questions and answers related to the active chat
+            chat.question.clear()  # Clear all the related questions
+            chat.answers.all().delete()  # Assuming 'answers' is a related name for Answer model
 
-        chat = Chat.objects.create(user=user)
+            # Reset question count
+            chat.question_count = 0
+            chat.save()
+
+        else:
+            # Create a new chat if none exists
+            chat = Chat.objects.create(user=user)
         chat.save()
         question = get_random_question([])
         chat.question.add(question)
@@ -63,7 +72,7 @@ class QuestionViewSet(ViewSet):
         chat.save()
 
         return Response(
-            {'result': QuestionSerializer(question, context={'request':request}).data, 'chat': chat.id, 'ok': True},
+            {'result': QuestionSerializer(question, context={'request': request}).data, 'chat': chat.id, 'ok': True},
             status=status.HTTP_201_CREATED
         )
 
@@ -82,7 +91,8 @@ class QuestionViewSet(ViewSet):
 
         end_game = chat.question_count == 5
         return Response(
-            {'result': QuestionSerializer(question, context={'request':request}).data, 'chat': chat.id, 'end': end_game, 'ok': True},
+            {'result': QuestionSerializer(question, context={'request': request}).data, 'chat': chat.id,
+             'end': end_game, 'ok': True},
             status=status.HTTP_200_OK
         )
 
@@ -105,7 +115,7 @@ class AnswerViewSet(ViewSet):
         if 'answer_audio' in data and 'answer' not in data:
             data.update({'answer': 'Processing audio transcription...'})
         print(data)
-        serializer = AnswerSerializer(data=data, context={'request':request})
+        serializer = AnswerSerializer(data=data, context={'request': request})
         if not serializer.is_valid():
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message=serializer.errors)
         answer_instance = serializer.save()

@@ -34,7 +34,7 @@ class RegisterView(ViewSet):
         serializer = LoginSerializer(data=request.data)
         if not serializer.is_valid():
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message=serializer.errors)
-        user = Users.objects.filter(phone_number=request.data['phone_number'])
+        user = Users.objects.filter(phone_number=request.data['phone_number']).first()
         if not user:
             raise CustomApiException(ErrorCodes.USER_DOES_NOT_EXIST)
         refresh = RefreshToken.for_user(user)

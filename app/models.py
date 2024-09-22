@@ -44,10 +44,6 @@ class Answer(models.Model):
         return self.answer[:10]
 
 
-class Summary(models.Model):
-    user = models.ForeignKey(Users, on_delete=models.CASCADE)
-    summary = models.TextField()
-    summary_audio = models.FileField(upload_to='summaries/audio')
 
 
 class Chat(models.Model):
@@ -55,10 +51,16 @@ class Chat(models.Model):
     question = models.ManyToManyField(Questions, blank=True)
     answer = models.ManyToManyField(Answer, blank=True)
     question_count = models.IntegerField(default=0)
-    summary = models.ForeignKey(Summary, on_delete=models.CASCADE)
     is_closed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.user.full_name
+
+
+class Summary(models.Model):
+    chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    summary = models.TextField()
+    summary_audio = models.FileField(upload_to='summaries/audio')

@@ -80,7 +80,8 @@ class QuestionViewSet(ViewSet):
         chat = Chat.objects.filter(user=request.user, is_closed=False, id=pk).first()
         if not chat:
             raise CustomApiException(ErrorCodes.NOT_FOUND)
-
+        questions = chat.question.values("question")
+        answers = chat.answer.values("answer")
         question = get_random_question(chat.question.values_list('id', flat=True))
         chat.question.add(question)
         chat.question_count += 1

@@ -41,7 +41,7 @@ class Answer(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.answer[:10]
+        return str(self.id)
 
 
 

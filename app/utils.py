@@ -64,66 +64,67 @@ def get_active_chat(user):
     """
     return Chat.objects.filter(user=user, is_closed=False).first()
 
-
-def send_chat_for_analysis(user, chat_id):
-    """
-    Sends chat questions and answers to an external API for processing and retrieves a response.
-
-    :param user: The user object.
-    :param chat_id: The chat ID to retrieve questions and answers.
-    :return: The response text from the external API.
-    """
-    # Retrieve the chat object
-    chat = Chat.objects.filter(user=user, is_closed=False, id=chat_id).first()
-    if not chat:
-        raise CustomApiException(ErrorCodes.NOT_FOUND)
-
-    # Extract questions and answers
-    questions = chat.question.values_list("question", flat=True)
-    answers = chat.answer.values_list("answer", flat=True)
-
-    # Prepare content for the API based on questions and answers
-    messages = []
-    for question, answer in zip(questions, answers):
-        messages.append({
-            "role": "user",
-            "content": f"Savol: {question}\nJavob: {answer}"
-        })
-
-    # Define the API URL and headers
-    url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions"
-    headers = {
-        "x-rapidapi-key": "22bbcfaf16msh6ff33c352478181p1d164djsn67b305c8fc5d",
-        "x-rapidapi-host": "cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com",
-        "Content-Type": "application/json"
-    }
-
-    # Prepare the API payload
-    payload = {
-        "messages": messages,
-        "model": "gpt-4o",
-        "system_prompt": "Vazifangiz berilgan savol va javoblar asosida foydalanuvchining kasbini bashorat qilishdir. Javoblarda kasb bilan bog'liq bo'lishi mumkin bo'lgan vazifalar, ko'nikmalar yoki boshqa elementlarni tahlil qiling va foydalanuvchining qaysi kasbga mansubligini aniqlang. Agar javoblar noaniq yoki kasbni aniqlash uchun yetarli ma'lumot bermasa, 'Kasbni aniqlash uchun yetarli ma'lumot mavjud emas' deb javob bering.",
-        "max_tokens": 500,
-        "temperature": 0.5
-    }
-
-    # Send the request to the external API
-    response = requests.post(url, json=payload, headers=headers)
-
-    # Check if the request was successful
-    if response.status_code == 200:
-        result = response.json()
-
-        # Extract the response content
-        response_text = result.get("choices", [{}])[0].get("message", {}).get("content", "")
-
-        # If there's a valid response, return the text
-        if response_text:
-            return response_text
-        else:
-            return "There was a problem analyzing the chat."
-    else:
-        raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Failed to connect to the external API.')
+#
+# def send_chat_for_analysis(user, chat_id):
+#     """
+#     Sends chat questions and answers to an external API for processing and retrieves a response.
+#
+#     :param user: The user object.
+#     :param chat_id: The chat ID to retrieve questions and answers.
+#     :return: The response text from the external API.
+#     """
+#     # Retrieve the chat object
+#     chat = Chat.objects.filter(user=user, is_closed=False, id=chat_id).first()
+#     if not chat:
+#         raise CustomApiException(ErrorCodes.NOT_FOUND)
+#
+#     # Extract questions and answers
+#     questions = chat.question.values_list("question", flat=True)
+#     answers = chat.answer.values_list("answer", flat=True)
+#
+#     # Prepare content for the API based on questions and answers
+#     messages = []
+#     for question, answer in zip(questions, answers):
+#         messages.append({
+#             "role": "user",
+#             "content": f"Savol: {question}\nJavob: {answer}"
+#         })
+#
+#     # Define the API URL and headers
+#     url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions"
+#     headers = {
+#         "x-rapidapi-key": "22bbcfaf16msh6ff33c352478181p1d164djsn67b305c8fc5d",
+#         "x-rapidapi-host": "cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com",
+#         "Content-Type": "application/json"
+#     }
+#
+#     # Prepare the API payload
+#     payload = {
+#         "messages": messages,
+#         "model": "gpt-4o",
+#         "system_prompt": "Vazifangiz berilgan savol va javoblar asosida foydalanuvchining kasbini bashorat qilishdir. Javoblarda kasb bilan bog'liq bo'lishi mumkin bo'lgan vazifalar, ko'nikmalar yoki boshqa elementlarni tahlil qiling va foydalanuvchining qaysi kasbga mansubligini aniqlang. Agar javoblar noaniq yoki kasbni aniqlash uchun yetarli ma'lumot bermasa, 'Kasbni aniqlash uchun yetarli ma'lumot mavjud emas' deb javob bering.",
+#         "max_tokens": 500,
+#         "temperature": 0.5
+#     }
+#
+#     # Send the request to the external API
+#     response = requests.post(url, json=payload, headers=headers)
+#
+#     # Check if the request was successful
+#     if response.status_code == 200:
+#         result = response.json()
+#
+#         # Extract the response content
+#         response_text = result.get("choices", [{}])[0].get("message", {}).get("content", "")
+#
+#         # If there's a valid response, return the text
+#         if response_text:
+#             return response_text
+#         else:
+#             return "There was a problem analyzing the chat."
+#     else:
+#         raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Failed to connect to the external API.')
+#
 
 
 def save_summary_audio(user, transcript, summary_text, chat):

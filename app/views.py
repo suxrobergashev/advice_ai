@@ -6,10 +6,11 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from exceptions.error_messages import ErrorCodes
 from exceptions.exception import CustomApiException
+from questions import get_user_character_and_profession
 from .models import Users, Chat
 from .serializers import UserSerializer, LoginSerializer, TokenSerializer, QuestionSerializer, AnswerSerializer, \
     SummarySerializer
-from .utils import get_active_chat, get_random_question, send_chat_for_analysis, save_summary_audio
+from .utils import get_active_chat, get_random_question, save_summary_audio
 
 
 class RegisterView(ViewSet):
@@ -108,7 +109,6 @@ class AnswerViewSet(ViewSet):
         if pk not in chat.question.values_list('id', flat=True):
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Question does not exist')
         data = request.data.copy()
-        print(data)
         data.update({'user': request.user.id, 'question': pk})
         serializer = AnswerSerializer(data=data, context={'request': request})
         if not serializer.is_valid():
@@ -144,15 +144,8 @@ class SummaryViewSet(ViewSet):
         answers = chat.answer.values_list("answer", flat=True)
 
         # Prepare messages for the API
-        messages = []
-        for question, answer in zip(questions, answers):
-            messages.append({
-                "role": "user",
-                "content": f"Savol: {question}\nJavob: {answer}"
-            })
-
         # Send data to external API for processing
-        analysis_result = send_chat_for_analysis(request.user, chat.id)
+        analysis_result = get_user_character_and_profession(chat.get_answers())
 
         # Save the generated summary and create an audio file
         summary_instance = save_summary_audio(request.user, transcript=analysis_result, summary_text=analysis_result, chat=chat)

@@ -58,6 +58,12 @@ class Chat(models.Model):
     def __str__(self):
         return self.user.full_name
 
+    def get_answers(self):
+        # Retrieve all answers related to the chat and format them
+        answers = self.answer.all()
+        response = [{'pk': answer.question.pk, 'answer': answer.answer} for answer in answers]
+        return response
+
 
 class Summary(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)

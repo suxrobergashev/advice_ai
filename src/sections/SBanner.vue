@@ -61,7 +61,11 @@
           >
             Bizni xoziroq sinab ko'rishingiz mumkin
           </p>
-          <SButton variant="white">Sinab ko'rish</SButton>
+          <div class="flex justify-center">
+            <SButton variant="white" @click="$router.push('/advice')"
+              >Sinab ko'rish</SButton
+            >
+          </div>
         </div>
       </div>
     </div>

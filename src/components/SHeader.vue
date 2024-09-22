@@ -21,7 +21,7 @@
             <a
               v-for="(item, index) in link"
               :key="index"
-              :href="`#${item.link}`"
+              :href="index === 1 ? `${item.link}` : `/#${item.link}`"
               class="font-medium text-[15px] leading-[26px] transition duration-300 text-[#141920] hover:text-[#0469FF] relative navItem"
             >
               {{ $t(`${item.title}`) }}
@@ -30,7 +30,7 @@
 
           <div class="flex flex-shrink-0 items-center gap-3">
             <div class="flex">
-              <div v-for="item in langs" :key="item">
+              <div v-for="(item, idx) in langs" :key="idx">
                 <div
                   class="flex justify-center items-center px-2 w-8 h-8 rounded-[50%] text-[#141920] text-xs cursor-pointer font-[700]"
                   :class="activeLang.value == item.value ? 'bg-white' : ''"
@@ -71,6 +71,10 @@ const link: TLink = [
   {
     link: "about",
     title: "about",
+  },
+  {
+    link: "/advice",
+    title: "AI Chat",
   },
   {
     link: "opportunity",

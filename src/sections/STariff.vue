@@ -131,7 +131,7 @@ const tariffCard: ITariff[] = [
         >
           {{ $t("tariff") }}
         </p>
-        <SButton variant="gray" class="text-base sm:text-lg"
+        <SButton @click="$router.push('/advice')" variant="gray" class="text-base sm:text-lg"
           >Demoni ishlatib ko'rish
         </SButton>
       </div>

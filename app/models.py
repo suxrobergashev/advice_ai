@@ -34,8 +34,8 @@ class Questions(models.Model):
 class Answer(models.Model):
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
     question = models.ForeignKey(Questions, on_delete=models.CASCADE)
-    answer = models.TextField()
-    answer_audio = models.FileField(upload_to='answers/audio')
+    answer = models.TextField(null=True, blank=True)
+    answer_audio = models.FileField(upload_to='answers/audio', null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

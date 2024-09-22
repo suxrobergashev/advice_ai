@@ -85,8 +85,8 @@ REST_FRAMEWORK = {
 }
 
 JWT_USE = True
-ACCESS_TOKEN_LIFETIME = timedelta(days=7)
-REFRESH_TOKEN_LIFETIME = timedelta(days=14)
+ACCESS_TOKEN_LIFETIME = timedelta(days=14)
+REFRESH_TOKEN_LIFETIME = timedelta(days=24)
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

@@ -7,5 +7,6 @@ export interface IFirstQuestion {
 export interface IFirstQuestionResponse {
   ok: boolean;
   chat: number;
+  end: boolean;
   result: IFirstQuestion;
 }

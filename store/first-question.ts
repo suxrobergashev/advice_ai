@@ -9,6 +9,7 @@ export const useFirstQuestion = defineStore("firstQuestion", {
   state: () => ({
     first_question: {} as IFirstQuestion,
     chatID: 0,
+    end: false,
     loading: false,
     error: false,
   }),
@@ -21,6 +22,7 @@ export const useFirstQuestion = defineStore("firstQuestion", {
         if (data.ok) {
           this.first_question = data.result;
           this.chatID = data.chat;
+          this.end = data.end;
         }
       } catch {
         this.error = true;
@@ -39,6 +41,7 @@ export const useFirstQuestion = defineStore("firstQuestion", {
         if (data.ok) {
           this.first_question = data.result;
           this.chatID = data.chat;
+          this.end = data.end;
         }
       } catch {
         this.error = true;

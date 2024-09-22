@@ -7,11 +7,14 @@ import { useFirstQuestion } from "../../store/first-question";
 import { useNextQuestion } from "../../store/next-question";
 import { useToast } from "vue-toastification";
 import SSpinner from "@/components/SSpinner.vue";
+import { useSummaryStore } from "../../store/summary";
+import TypingSpinner from "@/components/TypingSpinner.vue";
 
 const toast = useToast();
 
 const firstQuestionStore = useFirstQuestion();
 const nextQuestionStore = useNextQuestion();
+const summaryStore = useSummaryStore();
 
 const textAI = ref("");
 const audioPlay = ref();
@@ -32,13 +35,23 @@ const submitText = (value: string | FormData, type: "text" | "audio") => {
       showText.value = "";
       copyText.value = "";
       firstQuestionStore.first_question.question_audio = "";
-      firstQuestionStore
-        .fetchNextQuestion(firstQuestionStore.chatID)
-        .then(() => {
-          copyText.value = firstQuestionStore.first_question?.question;
-          if (firstQuestionStore.first_question?.question_audio)
-            setTimeout(() => audioPlay.value?.play(), 200);
+      if (firstQuestionStore.end) {
+        summaryStore.fetchSummary().then(() => {
+          copyText.value = summaryStore.summary?.summary;
+          firstQuestionStore.first_question.question_audio =
+            summaryStore.summary?.summary_audio;
+          if (summaryStore.summary?.summary_audio)
+            setTimeout(() => audioPlay.value?.play(), 400);
         });
+      } else {
+        firstQuestionStore
+          .fetchNextQuestion(firstQuestionStore.chatID)
+          .then(() => {
+            copyText.value = firstQuestionStore.first_question?.question;
+            if (firstQuestionStore.first_question?.question_audio)
+              setTimeout(() => audioPlay.value?.play(), 200);
+          });
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -93,6 +106,13 @@ onMounted(() => {
         </audio>
         <div class="text-gray-700">
           {{ showText }}
+        </div>
+        <div
+          class="absolute w-full h-full top-0 left-0 flex items-center justify-center z-10 bg-[#F0F0FC]"
+          v-if="summaryStore.loading"
+        >
+          <p class="text-gray-700 text-xl mr-2">Natijangiz aniqlanmoqda....</p>
+          <TypingSpinner />
         </div>
       </div>
       <div class="mt-4 flex gap-4">

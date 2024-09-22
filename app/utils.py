@@ -1,10 +1,13 @@
 import os
+from datetime import datetime
+
 import requests
-from .models import Summary
 from django.conf import settings
+
 from exceptions.error_messages import ErrorCodes
 from exceptions.exception import CustomApiException
-from .models import Questions, Chat
+from .models import Questions, Chat, Summary
+
 
 def save_summary_audio(user, transcript, summary_text):
     """
@@ -50,9 +53,9 @@ def save_summary_audio(user, transcript, summary_text):
 def get_active_chat(user):
     return Chat.objects.filter(user=user, is_closed=False).first()
 
+
 def get_random_question(exclude_ids):
     return Questions.objects.exclude(id__in=exclude_ids).order_by('?').first()
-
 
 
 def get_active_chat(user):
@@ -63,6 +66,7 @@ def get_active_chat(user):
     :return: The active Chat object or None.
     """
     return Chat.objects.filter(user=user, is_closed=False).first()
+
 
 #
 # def send_chat_for_analysis(user, chat_id):
@@ -127,7 +131,7 @@ def get_active_chat(user):
 #
 
 
-def save_summary_audio(user, transcript, summary_text, chat):
+def save_summary_audio(user, transcript, chat, summary_text):
     """
     Sends the transcript to the TTS API, saves the audio file, and saves the file path to the model.
 
@@ -146,25 +150,24 @@ def save_summary_audio(user, transcript, summary_text, chat):
     response = requests.post(url, data=payload)
 
     if response.status_code == 200:
-        # Define a path to save the audio file
-        audio_filename = f"{user.id}_output_audio.mp3"
-        audio_path = os.path.join("summaries/audio", audio_filename)  # Save relative path
+        # Define a unique path to save the audio file
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")  # Current timestamp
+        audio_filename = f"{user.id}_{timestamp}_audio.mp3"  # Unique file name
+        audio_path = os.path.join("summaries/audio", audio_filename)  # Nisbiy yo'l
 
         # Create the directory if it doesn't exist
-        os.makedirs(os.path.dirname(audio_path), exist_ok=True)
-        # Create the directory if it doesn't exist
-        os.makedirs(os.path.dirname(audio_path), exist_ok=True)
+        os.makedirs(os.path.dirname(os.path.join(settings.MEDIA_ROOT, audio_path)), exist_ok=True)
 
         # Save the audio response to a file
-        with open(audio_path, "wb") as audio_file:
+        with open(os.path.join(settings.MEDIA_ROOT, audio_path), "wb") as audio_file:
             audio_file.write(response.content)
 
-        # Create a new Summary object and save only the audio file path
+        # Create a new Summary object and save the audio file path
         summary_instance = Summary(
-            chat_id=chat.id,
+            chat=chat,
             user=user,
             summary=summary_text,
-            summary_audio=audio_path  # Saving the file path
+            summary_audio=audio_path  # Fayl yo'lini saqlash
         )
         summary_instance.save()
 

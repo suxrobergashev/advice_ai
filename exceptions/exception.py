@@ -13,7 +13,7 @@ class CustomApiException(APIException):
             'detail': detail_message,
             'ok': ok,
             'result': '',
-            'error_code': error_code,
+            'error_code': error_code.value,
         }
         if time:
             self.detail['return_time'] = time

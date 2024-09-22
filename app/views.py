@@ -107,6 +107,7 @@ class AnswerViewSet(ViewSet):
         if pk not in chat.question.values_list('id', flat=True):
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Question does not exist')
         data = request.data.copy()
+        print(data)
         data.update({'user': request.user.id, 'question': pk})
         serializer = AnswerSerializer(data=data, context={'request': request})
         if not serializer.is_valid():

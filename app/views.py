@@ -109,9 +109,6 @@ class AnswerViewSet(ViewSet):
         data.update({'user': request.user.id, 'question': pk})
 
         # If 'answer_audio' is provided but 'answer' is not, add a placeholder
-        if 'answer_audio' in data and 'answer' not in data:
-            data.update({'answer': 'Processing audio transcription...'})
-        print(data)
         serializer = AnswerSerializer(data=data, context={'request': request})
         if not serializer.is_valid():
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message=serializer.errors)

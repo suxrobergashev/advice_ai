@@ -78,7 +78,6 @@ class QuestionViewSet(ViewSet):
     )
     def next_question(self, request, pk):
         chat = Chat.objects.filter(user=request.user, is_closed=False, id=pk).first()
-        print(chat.values('answer__answer', 'question__question'))
         if not chat:
             raise CustomApiException(ErrorCodes.NOT_FOUND)
 

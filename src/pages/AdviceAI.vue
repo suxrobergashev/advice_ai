@@ -6,6 +6,7 @@ import SButton from "@/components/SButton.vue";
 import { useFirstQuestion } from "../../store/first-question";
 import { useNextQuestion } from "../../store/next-question";
 import { useToast } from "vue-toastification";
+import SSpinner from "@/components/SSpinner.vue";
 
 const toast = useToast();
 
@@ -116,8 +117,10 @@ onMounted(() => {
                 :disabled="textAI.length === 0"
                 variant="blue"
                 class="font-normal"
-                >Yuborish</SButton
               >
+                <SSpinner class="mr-[6px]" v-if="firstQuestionStore.loading" />
+                Yuborish
+              </SButton>
             </div>
           </div>
         </label>

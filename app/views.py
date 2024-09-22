@@ -6,9 +6,10 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from exceptions.error_messages import ErrorCodes
 from exceptions.exception import CustomApiException
-from .models import Users, Chat, Questions
-from .serializers import UserSerializer, LoginSerializer, TokenSerializer, QuestionSerializer, AnswerSerializer
-from .utils import get_active_chat, get_random_question
+from .models import Users, Chat
+from .serializers import UserSerializer, LoginSerializer, TokenSerializer, QuestionSerializer, AnswerSerializer, \
+    SummarySerializer
+from .utils import get_active_chat, get_random_question, send_chat_for_analysis, save_summary_audio
 
 
 class RegisterView(ViewSet):
@@ -119,12 +120,43 @@ class AnswerViewSet(ViewSet):
         return Response({'result': serializer.data, 'ok': True}, status=status.HTTP_200_OK)
 
 
-class Summary(ViewSet):
+class SummaryViewSet(ViewSet):
+    """
+    A viewset that handles the creation of summaries based on chat content.
+    """
+
     @swagger_auto_schema(
-        responses={}
+        operation_description="Creates a summary based on chat content and generates audio.",
+        responses={200: 'Success', 400: 'Validation Failed', 404: 'Chat Not Found'}
     )
-    def create(self, request, pk):
+    def create(self, request):
+        """
+        Retrieves an active chat for the user, sends chat content to an API for analysis,
+        and creates an audio summary.
+        """
+        # Get active chat for the user
         chat = get_active_chat(request.user)
         if not chat:
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Chat does not exist')
-        pass
+
+        # Extract questions and answers
+        questions = chat.question.values_list("question", flat=True)
+        answers = chat.answer.values_list("answer", flat=True)
+
+        # Prepare messages for the API
+        messages = []
+        for question, answer in zip(questions, answers):
+            messages.append({
+                "role": "user",
+                "content": f"Savol: {question}\nJavob: {answer}"
+            })
+
+        # Send data to external API for processing
+        analysis_result = send_chat_for_analysis(request.user, chat.id)
+
+        # Save the generated summary and create an audio file
+        summary_instance = save_summary_audio(request.user, transcript=analysis_result, summary_text=analysis_result, chat=chat)
+
+        # Serialize the summary instance and return the response
+        serializer = SummarySerializer(summary_instance)
+        return Response(serializer.data)

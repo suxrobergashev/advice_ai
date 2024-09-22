@@ -140,14 +140,14 @@ html {
 
 /*vue audio*/
 .vue-audio {
-  @apply !shadow-none !p-0;
+  @apply !shadow-none !p-0 bg-white !border-none flex flex-col items-center justify-center;
 }
 
 .vue-audio:nth-child(2) {
   @apply shrink-0;
 }
-.vue-audio:nth-child(5),
-.vue-audio:nth-child(4) {
+
+.vue-audio .text-red-400 {
   @apply hidden;
 }
 .vue-audio figure {

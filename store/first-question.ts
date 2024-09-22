@@ -8,6 +8,7 @@ const toast = useToast();
 export const useFirstQuestion = defineStore("firstQuestion", {
   state: () => ({
     first_question: {} as IFirstQuestion,
+    chatID: 0,
     loading: false,
     error: false,
   }),
@@ -19,6 +20,25 @@ export const useFirstQuestion = defineStore("firstQuestion", {
         const data = response.data;
         if (data.ok) {
           this.first_question = data.result;
+          this.chatID = data.chat;
+        }
+      } catch {
+        this.error = true;
+        toast.error("Something went wrong");
+      } finally {
+        this.loading = false;
+      }
+    },
+    async fetchNextQuestion(id: number) {
+      this.loading = true;
+      try {
+        const response = await API.get<IFirstQuestionResponse>(
+          `/questions/next/${id}/`
+        );
+        const data = response.data;
+        if (data.ok) {
+          this.first_question = data.result;
+          this.chatID = data.chat;
         }
       } catch {
         this.error = true;

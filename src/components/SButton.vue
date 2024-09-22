@@ -1,11 +1,12 @@
 <template>
-  <div
-    class="cursor-pointer select-none flex justify-center text-sm ms:text-base items-center py-[10px] px-[18px] ms:px-4 rounded-xl font-medium transition duration-300 active:scale-[0.95] disabled:cursor-not-allowed disabled:opacity-[0.8]"
+  <button
+    class="cursor-pointer select-none flex justify-center text-sm ms:text-base items-center py-[10px] px-[18px] ms:px-4 rounded-xl font-medium transition duration-300 active:scale-[0.95] disabled:cursor-not-allowed disabled:opacity-[0.95]"
     :class="[customClass, buttonStyle]"
+    :disabled="disabled"
   >
     <slot></slot>
     <slot name="pre"></slot>
-  </div>
+  </button>
 </template>
 
 <script setup lang="ts">

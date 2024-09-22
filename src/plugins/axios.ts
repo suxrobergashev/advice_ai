@@ -5,7 +5,7 @@ const API = axios.create({
 });
 
 const staticUser =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2OTUxNjMwLCJpYXQiOjE3MjY5NTEzMzAsImp0aSI6ImNhMjMyYjkwMzNkMjQ5MjY4ZmUxYWY1ZWMxNjNiNzFiIiwidXNlcl9pZCI6NH0.X7mnYOR8JUjQfHzTx-G6y9I8XaGVCamwk778Z1JpJQo";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4MTYxNDkwLCJpYXQiOjE3MjY5NTE4OTAsImp0aSI6IjFlNjAwYTQ5ZDQzMTRhY2U4NzRjYjc1ZjMyZDJlM2JhIiwidXNlcl9pZCI6NH0.DPBXl8W6LXcc_Do0wsYiJruOshoo1Y9CvsRpuM-c6iU";
 
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("token") || staticUser;

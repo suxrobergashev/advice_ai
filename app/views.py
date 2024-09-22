@@ -127,7 +127,7 @@ class SummaryViewSet(ViewSet):
 
     @swagger_auto_schema(
         operation_description="Creates a summary based on chat content and generates audio.",
-        responses={200: 'Success', 400: 'Validation Failed', 404: 'Chat Not Found'}
+        responses={200: SummarySerializer(), 400: 'Validation Failed', 404: 'Chat Not Found'}
     )
     def create(self, request):
         """
@@ -151,5 +151,5 @@ class SummaryViewSet(ViewSet):
         summary_instance = save_summary_audio(request.user, transcript=analysis_result, summary_text=analysis_result, chat=chat)
 
         # Serialize the summary instance and return the response
-        serializer = SummarySerializer(summary_instance)
-        return Response(serializer.data)
+        serializer = SummarySerializer(summary_instance, context={'request': request})
+        return Response({'result': serializer.data, 'ok': True}, status=status.HTTP_200_OK)

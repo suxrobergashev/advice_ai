@@ -14,7 +14,7 @@ Full project documentation, including all relevant information and details, can 
 
 Installation & Setup
 1. Clone the repository:
-   git clone https://github.com/your-repo-name.git
+   git clone https://github.com/suxrobergashev/Advice.git
    
 2. **Switch to the frontend branch for frontend code:**
    git checkout frontend

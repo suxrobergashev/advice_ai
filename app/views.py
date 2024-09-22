@@ -78,6 +78,7 @@ class QuestionViewSet(ViewSet):
     )
     def next_question(self, request, pk):
         chat = Chat.objects.filter(user=request.user, is_closed=False, id=pk).first()
+        print(chat.values('answer__answer', 'question__question'))
         if not chat:
             raise CustomApiException(ErrorCodes.NOT_FOUND)
 
@@ -107,15 +108,11 @@ class AnswerViewSet(ViewSet):
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message='Question does not exist')
         data = request.data.copy()
         data.update({'user': request.user.id, 'question': pk})
-
-        # If 'answer_audio' is provided but 'answer' is not, add a placeholder
         serializer = AnswerSerializer(data=data, context={'request': request})
         if not serializer.is_valid():
             raise CustomApiException(ErrorCodes.VALIDATION_FAILED, message=serializer.errors)
-        answer_instance = serializer.save()
-
-        # Add the actual Answer instance to the chat, not the serialized data
-        chat.answer.add(answer_instance)
+        serializer.save()
+        chat.answer.add(serializer.data.get('id'))
         chat.save()
 
         return Response({'result': serializer.data, 'ok': True}, status=status.HTTP_200_OK)

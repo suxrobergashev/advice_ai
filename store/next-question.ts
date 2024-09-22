@@ -14,24 +14,20 @@ export const useNextQuestion = defineStore("nextQuestion", {
   actions: {
     async postAnswer(
       id: number,
-      answer: string | Blob,
+      answer: string | FormData,
       type: "audio" | "text"
     ) {
       let data;
       if (type === "text") {
         data = { answer };
       } else {
-        const formData = new FormData();
-        formData.append("answer_audio", answer);
-        data = formData;
+        data = answer as FormData;
       }
       this.loading = true;
       try {
         const response = await API.post<IFirstQuestionResponse>(
           `/answer/${id}/`,
-          {
-            ...data,
-          }
+          data
         );
         return response.data;
       } catch {

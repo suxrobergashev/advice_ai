@@ -24,9 +24,9 @@ const writeFunction = () => {
   copyText.value = copyText.value?.substring(1);
 };
 
-const submitText = () => {
+const submitText = (value: string | FormData, type: "text" | "audio") => {
   nextQuestionStore
-    .postAnswer(firstQuestionStore.first_question?.id, textAI.value, "text")
+    .postAnswer(firstQuestionStore.first_question?.id, value, type)
     .then(() => {
       textAI.value = "";
       showText.value = "";
@@ -39,9 +39,6 @@ const submitText = () => {
           if (firstQuestionStore.first_question?.question_audio)
             setTimeout(() => audioPlay.value?.play(), 200);
         });
-      // .catch(() => {
-      //   toast.error("Something went wrong");
-      // });
     })
     .catch((error) => {
       console.log(error);
@@ -50,11 +47,12 @@ const submitText = () => {
 };
 
 const uploadAudio = (audioBlob: Blob) => {
-  console.log(audioBlob, "e blob");
+  const formData = new FormData();
+  formData.append("answer_audio", audioBlob, "audio.wav");
+  submitText(formData, "audio");
 };
 
-const finishRecord = (audio: Blob) => {
-  console.log(audio, "audio");
+const finishRecord = () => {
   document.querySelector(".vue-audio button")?.click();
 };
 
@@ -113,7 +111,7 @@ onMounted(() => {
             <div></div>
             <div class="flex items-center gap-4">
               <SButton
-                @click="submitText"
+                @click="() => submitText(textAI, 'text')"
                 :disabled="textAI.length === 0"
                 variant="blue"
                 class="font-normal"
@@ -124,13 +122,19 @@ onMounted(() => {
             </div>
           </div>
         </label>
-        <tapir-widget
-          :time="5"
-          :customUpload="uploadAudio"
-          :afterRecording="finishRecord"
-          buttonColor="blue"
-          class="vue-audio basis-[35%] rounded-2xl"
-        />
+        <div class="relative basis-[35%] w-full h-full">
+          <tapir-widget
+            :time="5"
+            :customUpload="uploadAudio"
+            :afterRecording="finishRecord"
+            :backendEndpoint="`http://34.29.101.105:8888/api/v1/answer/${firstQuestionStore.first_question?.id}/`"
+            buttonColor="blue"
+            class="vue-audio w-full h-full rounded-2xl"
+          />
+          <div class="absolute w-full h-full flex justify-center items-center">
+            <SSpinner v-if="firstQuestionStore.loading" />
+          </div>
+        </div>
       </div>
     </div>
   </div>

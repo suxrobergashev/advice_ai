@@ -45,7 +45,7 @@ class AnswerSerializer(serializers.ModelSerializer):
             # Process audio asynchronously
             with ThreadPoolExecutor() as executor:
                 future = executor.submit(self.process_audio, audio_file)
-                future.add_done_callback(self.update_answer_with_transcription(validated_data))
+                future.add_done_callback(self.update_answer_with_transcription(future, validated_data))
 
         # If 'answer' is already provided, it will be used as is
         return super().create(validated_data)
@@ -65,7 +65,7 @@ class AnswerSerializer(serializers.ModelSerializer):
         except requests.RequestException as e:
             return None  # Return None if transcription fails
 
-    def update_answer_with_transcription(self, validated_data):
+    def update_answer_with_transcription(self, future, validated_data):
         """
         Callback function to update the `answer` field with the transcription
         once the audio processing is complete.

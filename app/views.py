@@ -54,16 +54,13 @@ class QuestionViewSet(ViewSet):
 
         chat = get_active_chat(user)
         if chat:
-            # Clear previous questions and answers related to the active chat
-            chat.question.clear()  # Clear all the related questions
-            chat.answers.all().delete()  # Assuming 'answers' is a related name for Answer model
-
+            chat.question.clear()
+            chat.answers.clear()
             # Reset question count
             chat.question_count = 0
             chat.save()
 
         else:
-            # Create a new chat if none exists
             chat = Chat.objects.create(user=user)
         chat.save()
         question = get_random_question([])
